@@ -1,0 +1,400 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>AI Governance & Requirements Framework — Portfolio Project</title>
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+      background: #f5f5f3;
+      color: #1a1a1a;
+      min-height: 100vh;
+      padding: 2.5rem 1rem;
+    }
+
+    .container { max-width: 860px; margin: 0 auto; }
+
+    .badge {
+      display: inline-block;
+      background: #eeedfe;
+      color: #3c3489;
+      font-size: 11px;
+      font-weight: 600;
+      padding: 4px 12px;
+      border-radius: 6px;
+      letter-spacing: 0.04em;
+      text-transform: uppercase;
+      margin-bottom: 14px;
+    }
+
+    h1 {
+      font-size: 32px;
+      font-weight: 600;
+      color: #111;
+      margin-bottom: 10px;
+      line-height: 1.25;
+    }
+
+    .subtitle {
+      font-size: 16px;
+      color: #666;
+      line-height: 1.6;
+      max-width: 620px;
+      margin-bottom: 2rem;
+    }
+
+    .cta-btn {
+      display: inline-block;
+      background: #534ab7;
+      color: #fff;
+      font-size: 15px;
+      font-weight: 500;
+      padding: 12px 28px;
+      border-radius: 10px;
+      text-decoration: none;
+      transition: background 0.15s;
+      margin-bottom: 2.5rem;
+    }
+
+    .cta-btn:hover { background: #3c3489; }
+
+    .metrics-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
+      gap: 12px;
+      margin-bottom: 2.5rem;
+    }
+
+    .metric-card {
+      background: #fff;
+      border-radius: 12px;
+      border: 1px solid #e0dfd8;
+      padding: 1.1rem 1.25rem;
+    }
+
+    .metric-label {
+      font-size: 12px;
+      color: #888;
+      margin-bottom: 4px;
+      font-weight: 500;
+      text-transform: uppercase;
+      letter-spacing: 0.04em;
+    }
+
+    .metric-value {
+      font-size: 22px;
+      font-weight: 600;
+      color: #111;
+      margin-bottom: 2px;
+    }
+
+    .metric-note { font-size: 12px; color: #aaa; }
+
+    .section-title {
+      font-size: 13px;
+      font-weight: 600;
+      color: #888;
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+      margin-bottom: 12px;
+    }
+
+    .preview-section {
+      background: #fff;
+      border-radius: 16px;
+      border: 1px solid #e0dfd8;
+      overflow: hidden;
+      margin-bottom: 2.5rem;
+    }
+
+    .preview-header {
+      padding: 1rem 1.5rem;
+      border-bottom: 1px solid #f0efe8;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+
+    .preview-title { font-size: 14px; font-weight: 600; color: #444; }
+
+    .preview-tag {
+      font-size: 11px;
+      background: #eeedfe;
+      color: #3c3489;
+      padding: 3px 10px;
+      border-radius: 5px;
+      font-weight: 500;
+    }
+
+    .pages-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+      gap: 0;
+    }
+
+    .page-wrap {
+      border-right: 1px solid #f0efe8;
+      padding: 1rem;
+      text-align: center;
+    }
+
+    .page-wrap:last-child { border-right: none; }
+
+    .page-wrap img {
+      width: 100%;
+      border-radius: 6px;
+      border: 1px solid #e8e8e4;
+    }
+
+    .page-label {
+      font-size: 11px;
+      color: #aaa;
+      margin-top: 8px;
+    }
+
+    .features-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+      gap: 12px;
+      margin-bottom: 2.5rem;
+    }
+
+    .feature-card {
+      background: #fff;
+      border-radius: 12px;
+      border: 1px solid #e0dfd8;
+      padding: 1.1rem 1.25rem;
+    }
+
+    .feature-icon {
+      width: 32px;
+      height: 32px;
+      border-radius: 8px;
+      margin-bottom: 10px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .icon-purple { background: #eeedfe; }
+    .icon-blue { background: #e6f1fb; }
+    .icon-green { background: #eaf3de; }
+    .icon-amber { background: #faeeda; }
+    .icon-red { background: #fcebeb; }
+
+    .feature-name { font-size: 14px; font-weight: 600; color: #111; margin-bottom: 4px; }
+    .feature-desc { font-size: 13px; color: #777; line-height: 1.5; }
+
+    .kpi-section {
+      background: #fff;
+      border-radius: 16px;
+      border: 1px solid #e0dfd8;
+      padding: 1.5rem;
+      margin-bottom: 2.5rem;
+    }
+
+    .kpi-table { width: 100%; border-collapse: collapse; font-size: 13px; }
+    .kpi-table th {
+      text-align: left;
+      padding: 8px 12px;
+      background: #f5f5f3;
+      color: #666;
+      font-weight: 600;
+      font-size: 12px;
+      text-transform: uppercase;
+      letter-spacing: 0.03em;
+    }
+    .kpi-table td { padding: 10px 12px; border-top: 1px solid #f0efe8; color: #333; }
+    .kpi-table tr:first-child td { border-top: none; }
+
+    .target-pill {
+      display: inline-block;
+      background: #eaf3de;
+      color: #27500a;
+      font-size: 12px;
+      font-weight: 500;
+      padding: 3px 10px;
+      border-radius: 5px;
+    }
+
+    .stack-section {
+      background: #fff;
+      border-radius: 16px;
+      border: 1px solid #e0dfd8;
+      padding: 1.5rem;
+      margin-bottom: 2.5rem;
+    }
+
+    .stack-list { display: flex; flex-wrap: wrap; gap: 8px; }
+
+    .stack-tag {
+      font-size: 13px;
+      font-weight: 500;
+      padding: 5px 14px;
+      border-radius: 6px;
+      border: 1px solid #e0dfd8;
+      color: #444;
+      background: #f5f5f3;
+    }
+
+    .context-section {
+      background: #fff;
+      border-radius: 16px;
+      border: 1px solid #e0dfd8;
+      padding: 1.5rem;
+      margin-bottom: 2.5rem;
+    }
+
+    .context-text { font-size: 14px; color: #555; line-height: 1.75; }
+
+    footer { text-align: center; font-size: 12px; color: #bbb; padding-top: 1rem; }
+    svg.icon { width: 16px; height: 16px; }
+  </style>
+</head>
+<body>
+  <div class="container">
+
+    <div class="badge">AI Analyst Portfolio — Project 2</div>
+    <h1>AI Governance & Requirements Framework</h1>
+    <p class="subtitle">A comprehensive governance document for an enterprise AI implementation — covering mandatory disclosure policies, data privacy compliance, guardrails, human escalation mechanisms, audit schedules, and KPIs for a Customer Service AI Chatbot.</p>
+
+    <a class="cta-btn" href="AI_Governance_Requirements_Polished.pdf" target="_blank">View full document (PDF) &rarr;</a>
+
+    <div class="metrics-grid">
+      <div class="metric-card">
+        <div class="metric-label">Regulations covered</div>
+        <div class="metric-value">5+</div>
+        <div class="metric-note">GDPR, CCPA, FTC, Utah AI Act, CA SB 243</div>
+      </div>
+      <div class="metric-card">
+        <div class="metric-label">Guardrails defined</div>
+        <div class="metric-value">6</div>
+        <div class="metric-note">Prohibited actions with rationale</div>
+      </div>
+      <div class="metric-card">
+        <div class="metric-label">KPIs tracked</div>
+        <div class="metric-value">7</div>
+        <div class="metric-note">With measurable targets</div>
+      </div>
+      <div class="metric-card">
+        <div class="metric-label">Audit cadences</div>
+        <div class="metric-value">5</div>
+        <div class="metric-note">Weekly through annually</div>
+      </div>
+    </div>
+
+    <div class="preview-section">
+      <div class="preview-header">
+        <span class="preview-title">Document preview</span>
+        <span class="preview-tag">AI Governance Framework v1.0</span>
+      </div>
+      <div class="pages-grid">
+        <div class="page-wrap">
+          <img src="governance_page_1.png" alt="Page 1 — Project overview, disclosure policy, data privacy" />
+          <div class="page-label">Page 1 — Overview & privacy</div>
+        </div>
+        <div class="page-wrap">
+          <img src="governance_page_2.png" alt="Page 2 — Guardrails, escalation, monitoring, KPIs" />
+          <div class="page-label">Page 2 — Guardrails & KPIs</div>
+        </div>
+        <div class="page-wrap">
+          <img src="governance_page_3.png" alt="Page 3 — Approval and sign-off" />
+          <div class="page-label">Page 3 — Approval & sign-off</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="section-title">What this document covers</div>
+    <div class="features-grid">
+      <div class="feature-card">
+        <div class="feature-icon icon-purple">
+          <svg class="icon" viewBox="0 0 16 16" fill="none"><rect x="2" y="2" width="12" height="12" rx="2" stroke="#534ab7" stroke-width="1.5"/><line x1="5" y1="6" x2="11" y2="6" stroke="#534ab7" stroke-width="1.5" stroke-linecap="round"/><line x1="5" y1="9" x2="9" y2="9" stroke="#534ab7" stroke-width="1.5" stroke-linecap="round"/></svg>
+        </div>
+        <div class="feature-name">Mandatory disclosure policy</div>
+        <div class="feature-desc">AI identity disclosure requirements before data collection, with example disclosure language.</div>
+      </div>
+      <div class="feature-card">
+        <div class="feature-icon icon-blue">
+          <svg class="icon" viewBox="0 0 16 16" fill="none"><path d="M8 2L10 6H14L11 9L12 13L8 11L4 13L5 9L2 6H6L8 2Z" stroke="#185fa5" stroke-width="1.5" stroke-linejoin="round"/></svg>
+        </div>
+        <div class="feature-name">Data privacy & security</div>
+        <div class="feature-desc">GDPR, CCPA, and FTC compliance rules covering data minimization, consent, and sensitive data handling.</div>
+      </div>
+      <div class="feature-card">
+        <div class="feature-icon icon-red">
+          <svg class="icon" viewBox="0 0 16 16" fill="none"><circle cx="8" cy="8" r="5.5" stroke="#a32d2d" stroke-width="1.5"/><line x1="8" y1="5" x2="8" y2="8.5" stroke="#a32d2d" stroke-width="1.5" stroke-linecap="round"/><circle cx="8" cy="10.5" r="0.75" fill="#a32d2d"/></svg>
+        </div>
+        <div class="feature-name">Guardrails & content filters</div>
+        <div class="feature-desc">Prohibited actions, required behaviors, and out-of-scope handling to ensure responsible AI operation.</div>
+      </div>
+      <div class="feature-card">
+        <div class="feature-icon icon-amber">
+          <svg class="icon" viewBox="0 0 16 16" fill="none"><path d="M8 2V9M8 9L5 6M8 9L11 6" stroke="#854f0b" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/><path d="M3 11H13" stroke="#854f0b" stroke-width="1.5" stroke-linecap="round"/><path d="M3 13H13" stroke="#854f0b" stroke-width="1.5" stroke-linecap="round"/></svg>
+        </div>
+        <div class="feature-name">Human escalation mechanism</div>
+        <div class="feature-desc">Defined triggers, transfer process, and history handoff for seamless AI-to-human escalation.</div>
+      </div>
+      <div class="feature-card">
+        <div class="feature-icon icon-green">
+          <svg class="icon" viewBox="0 0 16 16" fill="none"><polyline points="2,10 5,6 8,8 11,4 14,5" stroke="#3b6d11" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        </div>
+        <div class="feature-name">Accuracy & audit schedule</div>
+        <div class="feature-desc">Weekly to annual audit cadences covering chat logs, bias detection, hallucination audits, and compliance reviews.</div>
+      </div>
+      <div class="feature-card">
+        <div class="feature-icon icon-purple">
+          <svg class="icon" viewBox="0 0 16 16" fill="none"><rect x="2" y="8" width="3" height="6" rx="1" fill="#534ab7"/><rect x="6.5" y="5" width="3" height="9" rx="1" fill="#534ab7"/><rect x="11" y="2" width="3" height="12" rx="1" fill="#534ab7"/></svg>
+        </div>
+        <div class="feature-name">KPIs & success metrics</div>
+        <div class="feature-desc">Seven measurable KPIs including CSAT, resolution rate, response accuracy, and zero data privacy incidents.</div>
+      </div>
+    </div>
+
+    <div class="kpi-section">
+      <div class="section-title">KPI targets at a glance</div>
+      <table class="kpi-table">
+        <thead>
+          <tr>
+            <th>KPI</th>
+            <th>Target</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr><td>Customer Satisfaction Score (CSAT)</td><td><span class="target-pill">≥ 85%</span></td></tr>
+          <tr><td>First Contact Resolution Rate</td><td><span class="target-pill">≥ 75%</span></td></tr>
+          <tr><td>Escalation Rate</td><td><span class="target-pill">≤ 20%</span></td></tr>
+          <tr><td>Response Accuracy Rate</td><td><span class="target-pill">≥ 90%</span></td></tr>
+          <tr><td>Average Response Time</td><td><span class="target-pill">&lt; 3 seconds</span></td></tr>
+          <tr><td>Compliance Audit Pass Rate</td><td><span class="target-pill">100%</span></td></tr>
+          <tr><td>Data Privacy Incidents</td><td><span class="target-pill">0</span></td></tr>
+        </tbody>
+      </table>
+    </div>
+
+    <div class="stack-section">
+      <div class="section-title">Frameworks & regulations referenced</div>
+      <div class="stack-list">
+        <span class="stack-tag">GDPR</span>
+        <span class="stack-tag">CCPA</span>
+        <span class="stack-tag">FTC Guidelines</span>
+        <span class="stack-tag">Utah AI Policy Act</span>
+        <span class="stack-tag">California SB 243</span>
+        <span class="stack-tag">AI disclosure requirements</span>
+        <span class="stack-tag">Data minimization</span>
+        <span class="stack-tag">Vendor contract governance</span>
+      </div>
+    </div>
+
+    <div class="context-section">
+      <div class="section-title">Business context</div>
+      <p class="context-text">This document was created to demonstrate a core AI Analyst competency: defining the governance, safety, and compliance requirements that must be embedded into every AI initiative before development begins. It addresses the job description's emphasis on guardrails, data privacy, ethical AI, and responsible implementation — translating regulatory requirements into actionable specifications that development and architecture teams can implement. The framework covers the full lifecycle from pre-deployment disclosure policy through post-production audit scheduling.</p>
+    </div>
+
+    <footer>AI Analyst Portfolio &mdash; Project 2 of 3</footer>
+
+  </div>
+</body>
+</html>
