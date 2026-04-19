@@ -1,6 +1,6 @@
 # AI Governance & Requirements Framework
 
-**Built by Carramah**
+**Built by Carramah Quiett**
 
 A comprehensive AI governance document created for an enterprise Customer Service AI Chatbot implementation — covering mandatory disclosure policies, data privacy compliance, content guardrails, human escalation mechanisms, audit schedules, and measurable KPIs.
 
